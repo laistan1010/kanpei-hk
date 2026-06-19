@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ganbei 乾杯串燒居酒屋 — Korean BBQ & Japanese sake izakaya in TST and Sai Wan, Hong Kong. Reserve tonight.">
+<meta property="og:title" content="Ganbei 乾杯 — Hong Kong Yakitori">
+<meta property="og:description" content="Korean BBQ meets Japanese sake. Two locations in Hong Kong.">
+<title>Ganbei 乾杯 — Korean BBQ & Sake Bar HK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=DM+Sans:wght@300;400;500&family=Noto+Sans+JP:wght@100;400;900&family=Noto+Serif+TC:wght@400;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ink:     #0A0500;
+  --coal:    #130900;
+  --char:    #1C1008;
+  --ember:   #FF5722;
+  --hot:     #FF3D00;
+  --gold:    #FFB300;
+  --cream:   #F5EDD8;
+  --mist:    #9C8B76;
+  --white:   #FFFDF8;
+  --red:     #FF1744;
+  --display: 'Dela Gothic One', sans-serif;
+  --body:    'DM Sans', sans-serif;
+  --serif:   'DM Serif Display', Georgia, serif;
+  --tc:      'Noto Serif TC', serif;
+  --eva:     'Noto Sans JP', sans-serif;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:var(--ink);
+  color:var(--cream);
+  font-family:var(--body);
+  font-weight:400;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* GRAIN OVERLAY */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:0.045;
+  pointer-events:none;
+  z-index:999;
+  mix-blend-mode:overlay;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:200;
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 40px;
+  transition:background .35s,border-color .35s;
+}
+nav.scrolled{
+  background:rgba(10,5,0,.95);
+  border-bottom:1px solid rgba(255,87,34,.15);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
+.nav-brand{
+  display:flex;align-items:center;gap:12px;
+  text-decoration:none;
+}
+.nav-brand-kanji{
+  font-family:var(--eva);
+  font-weight:700;
+  font-size:22px;
+  color:var(--ember);
+  line-height:1;
+}
+.nav-brand-divider{
+  width:1px;height:20px;
+  background:rgba(255,87,34,.3);
+}
+.nav-brand-en{
+  font-family:var(--display);
+  font-size:15px;
+  letter-spacing:.08em;
+  color:var(--white);
+}
+.nav-links{
+  display:flex;gap:32px;list-style:none;
+}
+.nav-links a{
+  font-size:13px;font-weight:400;
+  color:var(--mist);
+  text-decoration:none;
+  letter-spacing:.05em;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--cream)}
+.nav-cta{
+  font-family:var(--display);
+  font-size:13px;
+  letter-spacing:.1em;
+  background:var(--ember);
+  color:var(--white);
+  padding:10px 24px;
+  border-radius:3px;
+  text-decoration:none;
+  transition:background .2s,transform .15s;
+}
+.nav-cta:hover{background:var(--hot);transform:translateY(-1px)}
+.burger{
+  display:none;
+  background:none;border:none;
+  cursor:pointer;padding:6px;
+  flex-direction:column;gap:5px;
+}
+.burger span{
+  display:block;width:24px;height:1.5px;
+  background:var(--cream);border-radius:2px;
+  transition:transform .3s,opacity .3s;
+}
+.mob-nav{
+  display:none;
+  position:fixed;inset:0;
+  background:rgba(10,5,0,.98);
+  z-index:190;
+  flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:40px;
+}
+.mob-nav.open{display:flex}
+.mob-nav a{
+  font-family:var(--display);
+  font-size:32px;
+  color:var(--white);
+  text-decoration:none;
+  letter-spacing:.05em;
+  transition:color .2s;
+}
+.mob-nav a:hover{color:var(--ember)}
+.mob-nav .mob-cta{
+  background:var(--ember);
+  color:var(--white);
+  padding:14px 40px;
+  border-radius:3px;
+  font-size:18px;
+  margin-top:8px;
+}
+
+/* ── HERO ── */
+#hero{
+  min-height:100svh;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:0 40px 80px;
+  overflow:hidden;
+}
+.hero-bg-glow{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 90%, rgba(255,87,34,.22) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 80% 10%, rgba(255,179,0,.07) 0%, transparent 55%);
+  pointer-events:none;
+}
+.hero-bg-stripe{
+  position:absolute;
+  top:0;bottom:0;
+  left:-5%;
+  width:55%;
+  background:var(--char);
+  transform:skewX(-6deg);
+  transform-origin:bottom left;
+  pointer-events:none;
+  opacity:.6;
+}
+.hero-label{
+  position:relative;z-index:2;
+  display:inline-flex;align-items:center;gap:10px;
+  margin-bottom:28px;
+}
+.hero-label-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--ember);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(255,87,34,.5)}
+  50%{box-shadow:0 0 0 8px rgba(255,87,34,0)}
+}
+.hero-label-text{
+  font-size:11px;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--mist);
+}
+.hero-headline{
+  position:relative;z-index:2;
+  font-family:var(--display);
+  font-size:clamp(64px,11vw,148px);
+  line-height:.92;
+  letter-spacing:-.01em;
+  color:var(--white);
+  margin-bottom:0;
+}
+.hero-headline .line-gold{color:var(--gold)}
+.hero-headline .line-ember{color:var(--ember)}
+.hero-tc-line{
+  position:relative;z-index:2;
+  font-family:var(--eva);
+  font-weight:100;
+  font-size:clamp(13px,1.5vw,18px);
+  color:var(--mist);
+  letter-spacing:.14em;
+  margin-top:20px;
+  margin-bottom:40px;
+}
+.hero-actions{
+  position:relative;z-index:2;
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.btn-primary{
+  font-family:var(--display);
+  font-size:14px;
+  letter-spacing:.12em;
+  background:var(--ember);
+  color:var(--white);
+  padding:16px 36px;
+  border-radius:3px;
+  text-decoration:none;
+  transition:background .2s,transform .15s;
+  border:none;cursor:pointer;
+  display:inline-block;
+}
+.btn-primary:hover{background:var(--hot);transform:translateY(-2px)}
+.btn-outline{
+  font-family:var(--body);
+  font-size:14px;
+  font-weight:400;
+  letter-spacing:.05em;
+  background:transparent;
+  color:var(--cream);
+  padding:16px 34px;
+  border-radius:3px;
+  text-decoration:none;
+  border:1px solid rgba(245,237,216,.25);
+  transition:border-color .2s,color .2s;
+  display:inline-block;
+}
+.btn-outline:hover{border-color:var(--cream);color:var(--white)}
+
+/* ── TYPO WALL ── */
+.hero-typo-wall{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  user-select:none;
+  z-index:1;
+  overflow:hidden;
+}
+.hero-typo-wall .tw{
+  position:absolute;
+  font-family:var(--eva);
+  font-weight:900;
+  line-height:.95;
+  color:transparent;
+  letter-spacing:-.02em;
+}
+/* EVA style: ultra-bold display strokes */
+.tw.stroke{
+  -webkit-text-stroke:1.5px rgba(255,87,34,.12);
+  color:transparent;
+  font-weight:900;
+}
+/* Filled display chars */
+.tw.fill{color:rgba(255,179,0,.09);font-weight:900}
+.tw.fill-em{color:rgba(255,87,34,.11);font-weight:900}
+.tw.fill-cr{color:rgba(245,237,216,.07);font-weight:900}
+/* EVA annotation: ultra-light thin text — the key contrast */
+.tw.anno{
+  font-weight:100;
+  color:rgba(245,237,216,.12);
+  letter-spacing:.04em;
+  line-height:1.3;
+}
+.tw.anno-em{
+  font-weight:100;
+  color:rgba(255,87,34,.15);
+  letter-spacing:.06em;
+  line-height:1.3;
+}
+.tw.v{writing-mode:vertical-rl;letter-spacing:-.01em}
+.tw.v.anno{letter-spacing:.08em}
+
+/* ── TICKER ── */
+.ticker{
+  background:var(--ember);
+  padding:14px 0;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.ticker-track{
+  display:inline-flex;
+  animation:scroll 22s linear infinite;
+}
+.ticker-item{
+  font-family:var(--display);
+  font-size:13px;
+  letter-spacing:.12em;
+  color:var(--white);
+  padding:0 28px;
+  text-transform:uppercase;
+}
+.ticker-item::after{
+  content:'·';
+  margin-left:28px;
+  opacity:.5;
+}
+@keyframes scroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* ── COMMON SECTION ── */
+section{padding:100px 40px}
+.inner{max-width:1240px;margin:0 auto}
+.eyebrow{
+  font-size:10px;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ember);
+  margin-bottom:14px;
+  display:block;
+}
+.big-headline{
+  font-family:var(--display);
+  font-size:clamp(38px,5.5vw,72px);
+  line-height:.95;
+  letter-spacing:-.01em;
+  color:var(--white);
+}
+.section-body{
+  font-size:15px;font-weight:300;
+  color:var(--mist);
+  line-height:1.75;
+  max-width:480px;
+}
+.rule{
+  width:40px;height:2px;
+  background:var(--ember);
+  margin:24px 0;
+}
+
+/* ── MENU SECTION ── */
+#menu{background:var(--coal)}
+.menu-split{
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:80px;
+  align-items:start;
+}
+.menu-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2px;
+}
+.menu-card{
+  background:var(--char);
+  padding:32px 28px;
+  position:relative;
+  overflow:hidden;
+  transition:background .3s;
+  cursor:default;
+}
+.menu-card:hover{background:#221508}
+.menu-card-cat{
+  font-size:9px;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ember);
+  margin-bottom:14px;
+}
+.menu-card-name{
+  font-family:var(--display);
+  font-size:clamp(18px,2vw,26px);
+  color:var(--white);
+  line-height:1.05;
+  margin-bottom:8px;
+}
+.menu-card-tc{
+  font-family:var(--tc);
+  font-size:12px;
+  color:var(--mist);
+  display:block;
+  margin-bottom:14px;
+}
+.menu-card-desc{
+  font-size:13px;font-weight:300;
+  color:var(--mist);
+  line-height:1.65;
+}
+.menu-card-glow{
+  position:absolute;
+  bottom:-20px;right:-20px;
+  width:80px;height:80px;
+  border-radius:50%;
+  background:rgba(255,87,34,.06);
+  transition:transform .4s;
+}
+.menu-card:hover .menu-card-glow{transform:scale(3)}
+.menu-view-all{
+  margin-top:32px;
+  font-family:var(--display);
+  font-size:13px;
+  letter-spacing:.1em;
+  color:var(--ember);
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition:gap .2s;
+}
+.menu-view-all:hover{gap:14px}
+
+/* ── QUOTE STRIP ── */
+.quote-strip{
+  background:var(--ember);
+  padding:56px 40px;
+  overflow:hidden;
+  position:relative;
+}
+.quote-strip::before{
+  content:'';
+  position:absolute;
+  top:0;bottom:0;right:0;
+  width:35%;
+  background:var(--hot);
+  clip-path:polygon(8% 0,100% 0,100% 100%,0% 100%);
+}
+.quote-strip-inner{
+  max-width:1240px;
+  margin:0 auto;
+  position:relative;z-index:1;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:40px;align-items:center;
+}
+.quote-text{
+  font-family:var(--display);
+  font-size:clamp(22px,3vw,40px);
+  color:var(--white);
+  line-height:1.1;
+  letter-spacing:-.01em;
+}
+.quote-text span{
+  color:rgba(255,253,248,.55);
+  font-size:.65em;
+  font-family:var(--body);
+  font-weight:300;
+  display:block;
+  margin-top:8px;
+  letter-spacing:.05em;
+}
+
+/* ── DRINKS ── */
+#drinks{background:var(--ink)}
+.drinks-heading-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:60px;
+  flex-wrap:wrap;
+  gap:24px;
+}
+.drinks-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+}
+.drink-card{
+  background:var(--char);
+  padding:40px 32px;
+  position:relative;
+  overflow:hidden;
+  transition:background .3s;
+}
+.drink-card:hover{background:#1e1208}
+.drink-num{
+  font-family:var(--display);
+  font-size:80px;
+  color:rgba(255,87,34,.08);
+  line-height:1;
+  position:absolute;
+  top:16px;right:20px;
+  pointer-events:none;
+  transition:color .3s;
+}
+.drink-card:hover .drink-num{color:rgba(255,87,34,.13)}
+.drink-cat{
+  font-size:9px;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:16px;
+}
+.drink-name{
+  font-family:var(--display);
+  font-size:clamp(22px,2.5vw,32px);
+  color:var(--white);
+  line-height:1.0;
+  margin-bottom:8px;
+}
+.drink-tc{
+  font-family:var(--tc);
+  font-size:12px;
+  color:var(--mist);
+  display:block;
+  margin-bottom:18px;
+}
+.drink-desc{
+  font-size:13px;font-weight:300;
+  color:var(--mist);
+  line-height:1.7;
+}
+
+/* ── THE SPACE ── */
+#space{
+  background:var(--coal);
+  position:relative;
+  overflow:hidden;
+}
+#space::before{
+  content:'EAT';
+  position:absolute;
+  top:50%;left:-2%;
+  transform:translateY(-50%);
+  font-family:var(--display);
+  font-size:clamp(120px,22vw,300px);
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255,87,34,.05);
+  pointer-events:none;
+  user-select:none;
+  line-height:1;
+}
+.space-inner{
+  max-width:1240px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:5fr 4fr;
+  gap:80px;
+  align-items:start;
+  position:relative;z-index:1;
+}
+.space-pull{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:clamp(20px,2.5vw,30px);
+  color:var(--cream);
+  line-height:1.45;
+  border-left:3px solid var(--ember);
+  padding-left:24px;
+  margin:36px 0;
+}
+.feature-list{display:flex;flex-direction:column;gap:0}
+.feature{
+  padding:24px 0;
+  border-bottom:1px solid rgba(255,87,34,.1);
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:20px;
+}
+.feature:first-child{padding-top:0}
+.feature-icon{
+  font-family:var(--display);
+  font-size:11px;
+  color:var(--ember);
+  letter-spacing:.08em;
+  padding-top:4px;
+}
+.feature-title{
+  font-family:var(--display);
+  font-size:16px;
+  color:var(--white);
+  margin-bottom:6px;
+}
+.feature-desc{
+  font-size:13px;font-weight:300;
+  color:var(--mist);
+  line-height:1.65;
+}
+
+/* ── EVENTS ── */
+#events{background:var(--ink)}
+.events-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+.stat-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2px;
+}
+.stat-cell{
+  background:var(--char);
+  padding:36px 28px;
+  transition:background .3s;
+}
+.stat-cell:hover{background:#201408}
+.stat-num{
+  font-family:var(--display);
+  font-size:clamp(48px,5vw,72px);
+  color:var(--gold);
+  line-height:1;
+  margin-bottom:8px;
+}
+.stat-label{
+  font-size:12px;font-weight:300;
+  color:var(--mist);
+  line-height:1.5;
+}
+.events-perks{
+  list-style:none;
+  margin:28px 0 36px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.events-perks li{
+  font-size:14px;font-weight:300;
+  color:var(--cream);
+  display:flex;gap:12px;
+  align-items:flex-start;
+}
+.events-perks li::before{
+  content:'→';
+  color:var(--ember);
+  flex-shrink:0;
+  font-size:13px;
+  margin-top:2px;
+}
+
+/* ── LOCATIONS ── */
+#locations{
+  background:var(--coal);
+  border-top:1px solid rgba(255,87,34,.12);
+}
+.locations-label{
+  font-family:var(--display);
+  font-size:clamp(48px,7vw,96px);
+  color:rgba(255,87,34,.08);
+  line-height:1;
+  margin-bottom:-20px;
+  letter-spacing:-.02em;
+  user-select:none;
+}
+.locations-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2px;
+  margin-top:40px;
+}
+.loc-card{
+  background:var(--char);
+  padding:48px 40px;
+  transition:background .3s;
+  position:relative;
+  overflow:hidden;
+}
+.loc-card:hover{background:#1e1208}
+.loc-card::after{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:3px;height:100%;
+  background:var(--ember);
+  transform:scaleY(0);
+  transform-origin:bottom;
+  transition:transform .3s;
+}
+.loc-card:hover::after{transform:scaleY(1)}
+.loc-badge{
+  display:inline-block;
+  font-size:9px;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;
+  border:1px solid rgba(255,87,34,.35);
+  color:var(--ember);
+  padding:4px 12px;
+  border-radius:2px;
+  margin-bottom:20px;
+}
+.loc-name{
+  font-family:var(--display);
+  font-size:clamp(28px,3.5vw,48px);
+  color:var(--white);
+  line-height:1;
+  margin-bottom:6px;
+}
+.loc-tc{
+  font-family:var(--tc);
+  font-size:15px;
+  color:var(--mist);
+  display:block;
+  margin-bottom:32px;
+}
+.loc-details{display:flex;flex-direction:column;gap:18px}
+.loc-row-label{
+  font-size:9px;letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--mist);
+  margin-bottom:3px;
+}
+.loc-row-val{
+  font-size:14px;font-weight:400;
+  color:var(--cream);
+  line-height:1.55;
+}
+.loc-row-val a{color:var(--cream);text-decoration:none;transition:color .2s}
+.loc-row-val a:hover{color:var(--gold)}
+.loc-reserve{
+  display:inline-block;
+  margin-top:28px;
+  font-family:var(--display);
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--white);
+  background:var(--ember);
+  padding:12px 24px;
+  border-radius:2px;
+  text-decoration:none;
+  transition:background .2s;
+}
+.loc-reserve:hover{background:var(--hot)}
+
+/* ── RESERVE ── */
+#reserve{
+  background:var(--ink);
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+#reserve::before{
+  content:'乾杯';
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  font-family:var(--tc);
+  font-weight:700;
+  font-size:clamp(200px,40vw,500px);
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255,87,34,.05);
+  pointer-events:none;
+  user-select:none;
+  white-space:nowrap;
+  z-index:0;
+}
+.reserve-inner{
+  max-width:640px;
+  margin:0 auto;
+  position:relative;z-index:1;
+}
+.reserve-big{
+  font-family:var(--display);
+  font-size:clamp(44px,7vw,88px);
+  line-height:.95;
+  letter-spacing:-.01em;
+  color:var(--white);
+  margin-bottom:10px;
+}
+.reserve-big em{color:var(--gold);font-style:normal}
+.reserve-tc{
+  font-family:var(--tc);
+  font-size:14px;
+  color:var(--mist);
+  letter-spacing:.12em;
+  margin-bottom:52px;
+  display:block;
+}
+.reserve-cards{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2px;
+  margin-bottom:20px;
+}
+.reserve-card{
+  background:var(--char);
+  padding:32px 24px;
+  text-decoration:none;
+  display:block;
+  transition:background .3s;
+  border-top:2px solid transparent;
+}
+.reserve-card:hover{
+  background:var(--coal);
+  border-top-color:var(--ember);
+}
+.reserve-card-loc{
+  font-family:var(--display);
+  font-size:18px;
+  color:var(--white);
+  margin-bottom:4px;
+}
+.reserve-card-sub{
+  font-size:12px;font-weight:300;
+  color:var(--mist);
+}
+.reserve-main{
+  display:block;
+  width:100%;
+  font-family:var(--display);
+  font-size:16px;
+  letter-spacing:.1em;
+  background:var(--ember);
+  color:var(--white);
+  padding:20px 36px;
+  border-radius:3px;
+  text-decoration:none;
+  border:none;cursor:pointer;
+  transition:background .2s,transform .15s;
+  text-align:center;
+}
+.reserve-main:hover{background:var(--hot);transform:translateY(-2px)}
+.reserve-note{
+  font-size:12px;font-weight:300;
+  color:var(--mist);
+  margin-top:14px;
+  font-family:var(--tc);
+  letter-spacing:.06em;
+}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--coal);
+  border-top:1px solid rgba(255,87,34,.1);
+  padding:36px 40px;
+}
+.footer-inner{
+  max-width:1240px;
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:16px;
+}
+.footer-brand{
+  font-family:var(--display);
+  font-size:14px;
+  letter-spacing:.08em;
+  color:var(--mist);
+}
+.footer-brand span{color:var(--ember)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{
+  font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--mist);
+  text-decoration:none;
+  transition:color .2s;
+}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{
+  font-size:11px;
+  color:rgba(156,139,118,.4);
+  letter-spacing:.05em;
+}
+
+/* ── SCROLL REVEAL ── */
+.r{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.r.v{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.08s}
+.rd2{transition-delay:.16s}
+.rd3{transition-delay:.24s}
+.rd4{transition-delay:.32s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav{padding:0 24px}
+  .nav-links{display:none}
+  .burger{display:flex}
+  section{padding:72px 24px}
+  .menu-split{grid-template-columns:1fr}
+  .menu-grid{grid-template-columns:1fr}
+  .drinks-grid{grid-template-columns:1fr}
+  .space-inner{grid-template-columns:1fr;gap:48px}
+  .events-layout{grid-template-columns:1fr;gap:48px}
+  .locations-grid{grid-template-columns:1fr}
+  .reserve-cards{grid-template-columns:1fr}
+  .quote-strip-inner{grid-template-columns:1fr}
+  .drinks-heading-row{flex-direction:column;align-items:flex-start}
+  .footer-inner{flex-direction:column;align-items:flex-start;gap:12px}
+}
+@media(max-width:600px){
+  #hero{padding:0 24px 64px}
+  .hero-headline{font-size:clamp(52px,16vw,80px)}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .loc-card{padding:36px 24px}
+  footer{padding:28px 24px}
+}
+@media(prefers-reduced-motion:reduce){
+  .ticker-track{animation:none}
+  .r{opacity:1;transform:none}
+  .hero-label-dot{animation:none}
+}
+
+
+
+
+/* ── REVIEWS ── */
+#reviews{ background:var(--coal); }
+.reviews-header-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:52px;
+  flex-wrap:wrap;
+  gap:24px;
+}
+.reviews-rating-block{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex-shrink:0;
+}
+.reviews-score{
+  font-family:var(--display);
+  font-size:64px;
+  color:var(--gold);
+  line-height:1;
+}
+.reviews-meta{ display:flex; flex-direction:column; gap:4px; }
+.reviews-stars{ display:flex; gap:3px; }
+.reviews-stars span{
+  color:var(--gold);
+  font-size:18px;
+  line-height:1;
+}
+.reviews-count{
+  font-size:12px;
+  font-weight:300;
+  color:var(--mist);
+  letter-spacing:.06em;
+}
+.reviews-google{
+  font-size:10px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--mist);
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-top:4px;
+}
+.reviews-google::before{
+  content:'G';
+  font-family:var(--display);
+  font-size:13px;
+  color:var(--ember);
+}
+.reviews-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+}
+.review-card{
+  background:var(--char);
+  padding:28px 24px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  transition:background .3s;
+}
+.review-card:hover{ background:#1e1208; }
+.review-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:8px;
+}
+.review-stars{ display:flex; gap:2px; }
+.review-stars span{ color:var(--gold); font-size:13px; }
+.review-age{
+  font-size:10px;
+  color:var(--mist);
+  letter-spacing:.04em;
+  flex-shrink:0;
+  margin-top:1px;
+}
+.review-text{
+  font-size:13px;
+  font-weight:300;
+  color:var(--cream);
+  line-height:1.7;
+  flex:1;
+}
+.review-text.tc{
+  font-family:var(--tc);
+  font-size:12px;
+}
+.review-author{
+  font-size:11px;
+  font-weight:500;
+  color:var(--mist);
+  letter-spacing:.05em;
+  border-top:0.5px solid rgba(255,87,34,.1);
+  padding-top:12px;
+}
+.review-badge{
+  display:inline-block;
+  font-size:9px;
+  padding:2px 8px;
+  border-radius:100px;
+  background:rgba(255,87,34,.1);
+  border:0.5px solid rgba(255,87,34,.2);
+  color:var(--ember);
+  letter-spacing:.08em;
+  margin-top:4px;
+}
+@media(max-width:960px){
+  .reviews-grid{ grid-template-columns:1fr; }
+  .reviews-header-row{ flex-direction:column; align-items:flex-start; }
+}
+@media(max-width:600px){
+  .reviews-grid{ grid-template-columns:1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-brand">
+    <span class="nav-brand-kanji">乾杯</span>
+    <span class="nav-brand-divider"></span>
+    <span class="nav-brand-en">GANBEI HK</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#menu">The Grill</a></li>
+    <li><a href="#drinks">Drinks</a></li>
+    <li><a href="#space">The Space</a></li>
+    <li><a href="#events">Groups</a></li>
+    <li><a href="#locations">Locations</a></li>
+  </ul>
+  <a href="https://wa.me/85260155553?text=%E4%BD%A0%E5%A5%BD%EF%BC%81%E6%88%91%E6%83%B3%E9%A0%90%E7%B4%84%E4%B9%BE%E6%9D%AF%E4%B8%B2%E7%87%92%E5%B1%85%E9%85%92%E5%B1%8B%E3%80%82%0AHi!%20I%27d%20like%20to%20make%20a%20reservation%20at%20Ganbei%20Yakitori%20HK." class="nav-cta" target="_blank" rel="noopener">WHATSAPP</a>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mob-nav" id="mob-nav">
+  <a href="#menu" class="mob-link">THE GRILL</a>
+  <a href="#drinks" class="mob-link">DRINKS</a>
+  <a href="#space" class="mob-link">THE SPACE</a>
+  <a href="#events" class="mob-link">GROUPS</a>
+  <a href="#locations" class="mob-link">LOCATIONS</a>
+  <a href="https://wa.me/85260155553?text=%E4%BD%A0%E5%A5%BD%EF%BC%81%E6%88%91%E6%83%B3%E9%A0%90%E7%B4%84%E4%B9%BE%E6%9D%AF%E4%B8%B2%E7%87%92%E5%B1%85%E9%85%92%E5%B1%8B%E3%80%82%0AHi!%20I%27d%20like%20to%20make%20a%20reservation%20at%20Ganbei%20Yakitori%20HK." class="mob-cta mob-link" target="_blank" rel="noopener">WHATSAPP NOW</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-glow" aria-hidden="true"></div>
+  <div class="hero-bg-stripe" aria-hidden="true"></div>
+  <div class="hero-typo-wall" aria-hidden="true">
+
+    <!-- ═══ LAYER 1: GIANT OUTLINE STROKES (right spine) ═══ -->
+    <span class="tw stroke v" style="font-size:clamp(200px,36vw,500px);top:-3%;right:-2%;letter-spacing:-.04em">乾</span>
+    <span class="tw stroke v" style="font-size:clamp(200px,36vw,500px);top:47%;right:-2%;letter-spacing:-.04em">杯</span>
+
+    <!-- ═══ LAYER 2: BOLD DISPLAY — mid scale ═══ -->
+    <span class="tw stroke v" style="font-size:clamp(55px,9vw,120px);top:4%;left:30%">串</span>
+    <span class="tw fill-em v" style="font-size:clamp(50px,8vw,108px);top:4%;left:41%">燒</span>
+    <span class="tw fill v" style="font-size:clamp(50px,8vw,108px);top:4%;left:52%">居</span>
+    <span class="tw fill-cr v" style="font-size:clamp(50px,8vw,108px);top:4%;left:62%">酒</span>
+    <span class="tw fill-em" style="font-size:clamp(30px,5vw,70px);top:20%;left:30%;transform:rotate(-1.5deg)">大口吃肉</span>
+    <span class="tw fill" style="font-size:clamp(26px,4.5vw,60px);top:30%;left:30%;transform:rotate(.8deg)">痛快乾杯</span>
+    <span class="tw fill-em" style="font-size:clamp(24px,4vw,56px);top:40%;left:30%;transform:rotate(-2deg)">炭火燒烤</span>
+
+    <!-- ═══ LAYER 3: LONE MEGA CHARS (scattered, rotated) ═══ -->
+    <span class="tw fill-em" style="font-size:clamp(80px,15vw,200px);top:34%;left:28%;transform:rotate(5deg)">炭</span>
+    <span class="tw fill" style="font-size:clamp(72px,13vw,176px);top:50%;left:40%;transform:rotate(-7deg)">火</span>
+    <span class="tw fill-cr" style="font-size:clamp(64px,11vw,150px);top:12%;left:62%;transform:rotate(3deg)">酒</span>
+    <span class="tw stroke" style="font-size:clamp(56px,9vw,124px);top:60%;left:56%;transform:rotate(-10deg)">肉</span>
+
+    <!-- ═══ LAYER 4: EVA ANNOTATION COLUMNS (ultra-thin, vertical) ═══ -->
+    <span class="tw anno v" style="font-size:clamp(9px,1vw,13px);top:6%;left:71%">乾杯串燒居酒屋</span>
+    <span class="tw anno-em v" style="font-size:clamp(9px,1vw,13px);top:6%;left:74%">香港尖沙咀分店</span>
+    <span class="tw anno v" style="font-size:clamp(9px,1vw,13px);top:6%;left:77%">每天下午五時開始</span>
+    <span class="tw anno-em v" style="font-size:clamp(9px,1vw,13px);top:6%;left:80%">炭火燒烤·和牛·刺身</span>
+    <span class="tw anno v" style="font-size:clamp(9px,1vw,13px);top:6%;left:83%">西環分店同步開業</span>
+    <span class="tw anno-em v" style="font-size:clamp(9px,1vw,13px);top:6%;left:86%">立即WhatsApp訂位</span>
+    <span class="tw anno v" style="font-size:clamp(8px,.9vw,11px);top:50%;left:71%">唐揚·牡蠣·威士忌Highball</span>
+    <span class="tw anno-em v" style="font-size:clamp(8px,.9vw,11px);top:50%;left:74%">朝日生啤·清酒·串燒套餐</span>
+    <span class="tw anno v" style="font-size:clamp(8px,.9vw,11px);top:50%;left:77%">人數·日期·分店請告知</span>
+
+    <!-- ═══ LAYER 5: HORIZONTAL SMALL BOLD ═══ -->
+    <span class="tw fill-em" style="font-size:clamp(10px,1.2vw,16px);top:52%;left:30%;letter-spacing:.1em">尖沙咀 · 西環</span>
+    <span class="tw fill" style="font-size:clamp(10px,1.1vw,15px);top:56%;left:30%;letter-spacing:.08em">Tsim Sha Tsui · Sai Wan</span>
+    <span class="tw anno-em" style="font-size:clamp(8px,.9vw,12px);top:61%;left:30%;letter-spacing:.12em">每天下午5:00開始·尾單9:30</span>
+
+    <!-- ═══ LAYER 6: ROTATED ANNOTATIONS ═══ -->
+    <span class="tw anno-em" style="font-size:clamp(8px,.9vw,11px);top:72%;left:28%;transform:rotate(-90deg);transform-origin:left center;white-space:nowrap">WhatsApp·6015·5553·立即訂位</span>
+    <span class="tw anno" style="font-size:clamp(8px,.9vw,11px);top:80%;left:50%;transform:rotate(90deg);transform-origin:left center;white-space:nowrap">乾杯串燒居酒屋·香港·二〇二五</span>
+
+    <!-- ═══ LAYER 7: ENGLISH EVA GHOST ═══ -->
+    <span class="tw fill-cr" style="font-family:'Dela Gothic One',sans-serif;font-size:clamp(36px,6.5vw,88px);top:84%;right:4%;letter-spacing:.2em">KANPAI</span>
+    <span class="tw anno" style="font-family:'DM Sans',sans-serif;font-weight:100;font-size:clamp(8px,.9vw,11px);top:78%;right:4%;letter-spacing:.18em;text-transform:uppercase">Yakitori · Izakaya · Hong Kong</span>
+
+  </div>
+
+  <div class="hero-label r">
+    <span class="hero-label-dot" aria-hidden="true"></span>
+    <span class="hero-label-text i18n" data-en="Korean BBQ &amp; Sake Bar · TST &amp; Sai Wan · Hong Kong" data-tc="韓式燒肉 · 日本清酒 · 尖沙咀 &amp; 西環 · 香港">Korean BBQ &amp; Sake Bar · TST &amp; Sai Wan · Hong Kong</span>
+  </div>
+
+  <h1 class="hero-headline r rd1">
+    EAT<br>
+    <span class="line-gold">BIG.</span><br>
+    DRINK<br>
+    <span class="line-ember">WELL.</span>
+  </h1>
+
+  <p class="hero-tc-line r rd2 i18n" data-en="Eat big · Drink well · TST &amp; Sai Wan" data-tc="大口吃肉 · 痛快乾杯 · 尖沙咀 &amp; 西環">大口吃肉 · 痛快乾杯 · 尖沙咀 &amp; 西環</p>
+
+  <div class="hero-actions r rd3">
+    <a href="https://wa.me/85260155553?text=%E4%BD%A0%E5%A5%BD%EF%BC%81%E6%88%91%E6%83%B3%E9%A0%90%E7%B4%84%E4%B9%BE%E6%9D%AF%E4%B8%B2%E7%87%92%E5%B1%85%E9%85%92%E5%B1%8B%E3%80%82%0AHi!%20I%27d%20like%20to%20make%20a%20reservation%20at%20Ganbei%20Yakitori%20HK." class="btn-primary" target="_blank" rel="noopener">WHATSAPP TO BOOK</a>
+    <a href="#menu" class="btn-outline">View the Menu</a>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">Korean BBQ</span>
+    <span class="ticker-item">Sake Bar</span>
+    <span class="ticker-item">TST</span>
+    <span class="ticker-item">Sai Wan</span>
+    <span class="ticker-item">A5 Wagyu</span>
+    <span class="ticker-item">Asahi on Draft</span>
+    <span class="ticker-item">Sake Bar</span>
+    <span class="ticker-item">Private Rooms</span>
+    <span class="ticker-item">Open from 5PM</span>
+    <span class="ticker-item">Korean BBQ</span>
+    <span class="ticker-item">Sake Bar</span>
+    <span class="ticker-item">TST</span>
+    <span class="ticker-item">Sai Wan</span>
+    <span class="ticker-item">A5 Wagyu</span>
+    <span class="ticker-item">Asahi on Draft</span>
+    <span class="ticker-item">Sake Bar</span>
+    <span class="ticker-item">Private Rooms</span>
+    <span class="ticker-item">Open from 5PM</span>
+  </div>
+</div>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="inner">
+    <div class="menu-split">
+      <div>
+        <span class="eyebrow r i18n" data-en="What We Grill" data-tc="今晚燒咩">What We Grill</span>
+        <h2 class="big-headline r rd1">THE<br>MENU.</h2>
+        <div class="rule r rd2"></div>
+        <p class="section-body r rd2 i18n" data-en="100+ items. Four price tiers. Order like you own the table — because tonight, you do." data-tc="過百款選擇。四個價位。隨心點、大口燒 — 今晚呢張桌係你話事。">100+ items. Four price tiers. Order like you own the table — because tonight, you do.</p>
+        <a href="https://wa.me/85260155553?text=%E4%BD%A0%E5%A5%BD%EF%BC%81%E6%88%91%E6%83%B3%E9%A0%90%E7%B4%84%E4%B9%BE%E6%9D%AF%E4%B8%B2%E7%87%92%E5%B1%85%E9%85%92%E5%B1%8B%E3%80%82%0AHi!%20I%27d%20like%20to%20make%20a%20reservation%20at%20Ganbei%20Yakitori%20HK." class="menu-view-all r rd3" target="_blank" rel="noopener">Book to Taste It →</a>
+      </div>
+      <div class="menu-grid r rd1">
+        <div class="menu-card">
+          <p class="menu-card-cat i18n" data-en="Signature" data-tc="招牌">Signature</p>
+          <h3 class="menu-card-name i18n" data-en="Korean BBQ Skewers" data-tc="韓式炭燒串燒">Korean BBQ Skewers</h3>
+          <span class="menu-card-tc i18n" data-en="Charcoal BBQ" data-tc="炭火韓燒">炭火韓燒</span>
+          <p class="menu-card-desc i18n" data-en="Pork belly, short rib, chicken, beef tongue — threaded and grilled over live charcoal until the fat renders and smoke rises." data-tc="五花腩、短肋排、雞腿肉、牛舌 — 穿串後以炭火燒至脂肪溶化、煙霧升騰。">Pork belly, short rib, chicken, beef tongue — threaded and grilled over live charcoal until the fat renders and smoke rises.</p>
+          <div class="menu-card-glow" aria-hidden="true"></div>
+        </div>
+        <div class="menu-card">
+          <p class="menu-card-cat i18n" data-en="Premium" data-tc="精選">Premium</p>
+          <h3 class="menu-card-name i18n" data-en="Wagyu &amp; Short Rib" data-tc="和牛 · 牛小排">Wagyu &amp; Short Rib</h3>
+          <span class="menu-card-tc i18n" data-en="A5 Wagyu · Galbi" data-tc="A5 和牛 · 韓式牛小排">A5 和牛 · 韓式牛小排</span>
+          <p class="menu-card-desc i18n" data-en="Japanese A5 wagyu alongside Korean-cut galbi short rib. The kind of combination that only makes sense when it's right in front of you." data-tc="日本 A5 和牛配韓式牛小排。呢個組合係要食過先明點解係天作之合。">Japanese A5 wagyu alongside Korean-cut galbi short rib. The kind of combination that only makes sense when it's right in front of you.</p>
+          <div class="menu-card-glow" aria-hidden="true"></div>
+        </div>
+        <div class="menu-card">
+          <p class="menu-card-cat i18n" data-en="Sides" data-tc="小食">Sides</p>
+          <h3 class="menu-card-name i18n" data-en="Banchan &amp; Bites" data-tc="韓式小菜 · 小食">Banchan &amp; Bites</h3>
+          <span class="menu-card-tc i18n" data-en="Korean sides · Izakaya snacks" data-tc="韓式小菜 · 居酒屋小食">韓式小菜 · 居酒屋小食</span>
+          <p class="menu-card-desc i18n" data-en="Crispy chicken, kimchi pancake, mentaiko potato salad. The kind of dishes you order once, then immediately again." data-tc="香脆炸雞、泡菜煎餅、明太子薯蓉。點一次之後即刻再點多次嘅那種菜。">Crispy chicken, kimchi pancake, mentaiko potato salad. The kind of dishes you order once, then immediately again.</p>
+          <div class="menu-card-glow" aria-hidden="true"></div>
+        </div>
+        <div class="menu-card">
+          <p class="menu-card-cat">From the Ocean</p>
+          <h3 class="menu-card-name">Oysters &amp; Sashimi</h3>
+          <span class="menu-card-tc">生蠔 · 刺身</span>
+          <p class="menu-card-desc">Market-fresh oysters on ice. Sashimi cuts that arrive cold and leave you ordering another round — food and drinks alike.</p>
+          <div class="menu-card-glow" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE STRIP -->
+<div class="quote-strip" aria-hidden="false">
+  <div class="quote-strip-inner">
+    <blockquote class="quote-text">
+      "<span class="i18n" data-en='Over a hundred dishes. One table. One very good night.' data-tc='過百款選擇。一張桌。一個美好夜晚。'>Over a hundred dishes. One table. One very good night.</span>"
+      <span class="i18n" data-en="— Korean BBQ. Japanese sake. Ganbei." data-tc="— 韓式燒肉。日本清酒。乾杯。">— Korean BBQ. Japanese sake. Ganbei.</span>
+    </blockquote>
+    <a href="https://wa.me/85260155553?text=%E4%BD%A0%E5%A5%BD%EF%BC%81%E6%88%91%E6%83%B3%E9%A0%90%E7%B4%84%E4%B9%BE%E6%9D%AF%E4%B8%B2%E7%87%92%E5%B1%85%E9%85%92%E5%B1%8B%E3%80%82%0AHi!%20I%27d%20like%20to%20make%20a%20reservation%20at%20Ganbei%20Yakitori%20HK." class="btn-primary" target="_blank" rel="noopener" style="flex-shrink:0">BOOK NOW</a>
+  </div>
+</div>
+
+<!-- DRINKS -->
+<section id="drinks">
+  <div class="inner">
+    <div class="drinks-heading-row">
+      <div>
+        <span class="eyebrow r i18n" data-en="The Pour" data-tc="今晚飲咩">The Pour</span>
+        <h2 class="big-headline r rd1"><span class="i18n" data-en="NO GREAT&lt;br&gt;MEAL DRINKS&lt;br&gt;ITSELF." data-tc="好食要配&lt;br&gt;好飲。">NO GREAT<br>MEAL DRINKS<br>ITSELF.</span></h2>
+      </div>
+      <p class="section-body r rd1 i18n" style="max-width:360px" data-en="Asahi on draft. Curated Japanese sake. Whisky highballs built the way they should be — cold, clean, cracked ice. Korean BBQ was made for this." data-tc="生啤。精選日本清酒。威士忌 Highball — 夠冷、夠清、冰塊要夠響。韓式燒肉就係要配呢啲。">Asahi on draft. Curated Japanese sake. Whisky highballs built the way they should be — cold, clean, cracked ice. Korean BBQ was made for this.</p>
+    </div>
+    <div class="drinks-grid">
+      <div class="drink-card r">
+        <span class="drink-num" aria-hidden="true">01</span>
+        <p class="drink-cat">On Draft</p>
+        <h3 class="drink-name i18n" data-en="Asahi Super Dry" data-tc="朝日生啤">Asahi Super Dry</h3>
+        <span class="drink-tc i18n" data-en="Draft Beer" data-tc="朝日生啤">朝日生啤</span>
+        <p class="drink-desc i18n" data-en="The cleanest lager to pair with Korean BBQ. Poured cold, served fast — glasses up at 8PM for the table kanpai." data-tc="配韓式燒肉最乾淨嘅啤酒。冰冷即斟，快速上桌 — 8PM 全桌舉杯，一齊乾杯。">The cleanest lager to pair with Korean BBQ. Poured cold, served fast — glasses up at 8PM for the table kanpai.</p>
+      </div>
+      <div class="drink-card r rd1">
+        <span class="drink-num" aria-hidden="true">02</span>
+        <p class="drink-cat">Nihonshu</p>
+        <h3 class="drink-name i18n" data-en="Japanese Sake" data-tc="日本清酒">Japanese Sake</h3>
+        <span class="drink-tc i18n" data-en="Curated Nihonshu" data-tc="嚴選日本酒">嚴選日本酒</span>
+        <p class="drink-desc i18n" data-en="Our sake list is the reason people come back. Junmai, daiginjo, seasonal brews — rotating weekly. Korean BBQ and Japanese sake is the combination nobody talks about enough." data-tc="我哋嘅清酒單係客人回頭嘅原因。純米、大吟釀、季節限定 — 每週更新。韓式燒肉配日本清酒，係被嚴重低估嘅組合。">Our sake list is the reason people come back. Junmai, daiginjo, seasonal brews — rotating weekly. Korean BBQ and Japanese sake is the combination nobody talks about enough.</p>
+      </div>
+      <div class="drink-card r rd2">
+        <span class="drink-num" aria-hidden="true">03</span>
+        <p class="drink-cat">Highball Bar</p>
+        <h3 class="drink-name">Whisky Highball</h3>
+        <span class="drink-tc">威士忌 Highball</span>
+        <p class="drink-desc">Japanese whisky, cracked ice, cold soda. The sound of ice cracking is the unofficial starting gun for the night.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE SPACE -->
+<section id="space">
+  <div class="space-inner">
+    <div>
+      <span class="eyebrow r i18n" data-en="The Space" data-tc="空間">The Space</span>
+      <h2 class="big-headline r rd1"><span class="i18n" data-en="SEOUL FIRE,&lt;br&gt;TOKYO SOUL,&lt;br&gt;HONG KONG." data-tc="韓火日魂，&lt;br&gt;在香港。">SEOUL FIRE,<br>TOKYO SOUL,<br>HONG KONG.</span></h2>
+      <blockquote class="space-pull r rd2">
+        "<span class="i18n" data-en='The chalk walls, the sake bottles, the low light — Korean BBQ smoke in the air. You stop thinking about the day the moment you sit down.' data-tc='粉筆壁畫、清酒瓶牆、昏黃燈光 — 空氣裡是韓燒的煙。坐下嗰刻，今日發生嘅事全部消失。'>The chalk walls, the sake bottles, the low light — Korean BBQ smoke in the air. You stop thinking about the day the moment you sit down.</span>"
+      </blockquote>
+      <p class="section-body r rd3 i18n" data-en="Korean BBQ at the heart, Japanese sake at the bar. Loud enough to feel alive, intimate enough to actually talk. Come for the meat. Stay for the sake." data-tc="韓式燒肉係核心，日本清酒係靈魂。夠嘈令你感覺活着，夠親密令你真正傾偈。為燒肉而來，為清酒而留。">Korean BBQ at the heart, Japanese sake at the bar. Loud enough to feel alive, intimate enough to actually talk. Come for the meat. Stay for the sake.</p>
+    </div>
+    <div class="feature-list">
+      <div class="feature r">
+        <span class="feature-icon">I</span>
+        <div>
+          <p class="feature-title">The Chalk Wall</p>
+          <p class="feature-desc">Hand-drawn menu art and Japanese illustrations — updated every season. Worth photographing. Guaranteed to appear on Instagram.</p>
+        </div>
+      </div>
+      <div class="feature r rd1">
+        <span class="feature-icon">II</span>
+        <div>
+          <p class="feature-title">The Sake Wall</p>
+          <p class="feature-desc">A curated row of sake bottles lines the bar. Your server knows every one. Ask questions — they're designed to be asked.</p>
+        </div>
+      </div>
+      <div class="feature r rd2">
+        <span class="feature-icon">III</span>
+        <div>
+          <p class="feature-title">The 8PM Kanpai</p>
+          <p class="feature-desc">At 8 o'clock every evening, the whole room raises a glass together. Arrive before then. Make sure yours is full.</p>
+        </div>
+      </div>
+      <div class="feature r rd3">
+        <span class="feature-icon">IV</span>
+        <div>
+          <p class="feature-title">Walk-ins Welcome</p>
+          <p class="feature-desc">Reserve to be safe, walk in when you're brave. The grill is on from 5PM, every day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="inner">
+    <div class="reviews-header-row">
+      <div>
+        <span class="eyebrow r">What People Say</span>
+        <h2 class="big-headline r rd1">REAL TABLES.<br>REAL NIGHTS.</h2>
+      </div>
+      <div class="reviews-rating-block r rd1">
+        <div class="reviews-score">4.2</div>
+        <div class="reviews-meta">
+          <div class="reviews-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+          </div>
+          <p class="reviews-count">64 reviews</p>
+          <p class="reviews-google">Google Reviews</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reviews-grid">
+
+      <div class="review-card r">
+        <div class="review-top">
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <span class="review-age">1 year ago</span>
+        </div>
+        <p class="review-text">"An absolute hidden gem for yakitori and other amazing izakaya style cuisine! There's one in Tsim Sha Tsui that also rocks — look at all the tsukunes! The Asahi in a Steiner is unbeatable."</p>
+        <div>
+          <p class="review-author">C Lam</p>
+          <span class="review-badge">Local Guide · 156 reviews</span>
+        </div>
+      </div>
+
+      <div class="review-card r rd1">
+        <div class="review-top">
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <span class="review-age">1 year ago</span>
+        </div>
+        <p class="review-text tc">「脆炸芝麻雞翼外皮酥脆，粟米天婦羅外酥內嫩，燒韓式安格斯牛粒肉質滑嫩。每道菜展現精緻技術，燒烤愛好者不容錯過！」</p>
+        <div>
+          <p class="review-author">Christine Lee</p>
+          <span class="review-badge">Local Guide · 87 reviews</span>
+        </div>
+      </div>
+
+      <div class="review-card r rd2">
+        <div class="review-top">
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <span class="review-age">1 year ago</span>
+        </div>
+        <p class="review-text">"Great food, great vibes. A lot of plum wine and sake selection — nice place to hang out with friends. The kind of spot you keep coming back to."</p>
+        <div>
+          <p class="review-author">Ray Lau</p>
+          <span class="review-badge">Local Guide · 111 reviews</span>
+        </div>
+      </div>
+
+      <div class="review-card r">
+        <div class="review-top">
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <span class="review-age">6 years ago</span>
+        </div>
+        <p class="review-text">"Spent a pleasant evening eating yakitori and drinking Asahi for hours. The staff is extraordinarily friendly, courteous, and professional. An amazing experience."</p>
+        <div>
+          <p class="review-author">CA PA</p>
+          <span class="review-badge">Local Guide · 73 reviews</span>
+        </div>
+      </div>
+
+      <div class="review-card r rd1">
+        <div class="review-top">
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <span class="review-age">6 years ago</span>
+        </div>
+        <p class="review-text">"Skewers are not over-seasoned like most competitors. Various sake to choose from. Value for money. A friendly vibe that keeps you coming back."</p>
+        <div>
+          <p class="review-author">Enzo Cheng</p>
+          <span class="review-badge">Local Guide · 94 reviews</span>
+        </div>
+      </div>
+
+      <div class="review-card r rd2">
+        <div class="review-top">
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <span class="review-age">5 years ago</span>
+        </div>
+        <p class="review-text">"The food is very good — a lot of effort in appearance and taste. The fried lotus root is surprisingly good. Must try. Environment is comfy, staff are polite. Worth every dollar."</p>
+        <div>
+          <p class="review-author">KW</p>
+          <span class="review-badge">Local Guide · 356 reviews</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS / GROUP BOOKINGS -->
+<section id="events">
+  <div class="inner">
+    <div class="events-layout">
+      <div>
+        <span class="eyebrow r i18n" data-en="Private &amp; Group Dining" data-tc="包場 · 團體訂座">Private &amp; Group Dining</span>
+        <h2 class="big-headline r rd1">YOUR CREW<br>DESERVES<br>A GREAT<br>TABLE.</h2>
+        <div class="rule r rd2"></div>
+        <ul class="events-perks r rd2">
+          <li>Birthday, farewell, corporate team dinner — sorted</li>
+          <li>Custom menus and set courses on request</li>
+          <li>Drinks packages: Asahi, sake, and highball pairing</li>
+          <li>Private room options at both locations</li>
+          <li>Flexible for 2 guests to full venue buyout</li>
+        </ul>
+        <a href="#reserve" class="btn-primary r rd3">Plan My Group Booking</a>
+      </div>
+      <div class="r rd1">
+        <div class="stat-grid">
+          <div class="stat-cell">
+            <p class="stat-num">2</p>
+            <p class="stat-label">Walk-in friendly<br>Date nights</p>
+          </div>
+          <div class="stat-cell">
+            <p class="stat-num">10</p>
+            <p class="stat-label">Work dinners<br>Birthday groups</p>
+          </div>
+          <div class="stat-cell">
+            <p class="stat-num">20</p>
+            <p class="stat-label">Corporate events<br>Celebrations</p>
+          </div>
+          <div class="stat-cell">
+            <p class="stat-num">30+</p>
+            <p class="stat-label">Full buyout<br>DM us to plan</p>
+          </div>
+        </div>
+        <p style="font-size:12px;color:var(--mist);margin-top:16px;line-height:1.6">Groups of 8+ — reserve at least 3 days ahead. Custom menus with 5 days notice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section id="locations">
+  <div class="inner">
+    <span class="eyebrow r">Find Us</span>
+    <p class="locations-label r" aria-hidden="true">TWO</p>
+    <div class="locations-grid">
+
+      <div class="loc-card r">
+        <span class="loc-badge">Kowloon</span>
+        <h3 class="loc-name">Tsim Sha Tsui</h3>
+        <span class="loc-tc">尖沙咀 · TST</span>
+        <div class="loc-details">
+          <div>
+            <p class="loc-row-label">Address</p>
+            <p class="loc-row-val">漆咸道南 123號地下<br>G, H舖, 尖沙咀, 九龍</p>
+          </div>
+          <div>
+            <p class="loc-row-label">Hours</p>
+            <p class="loc-row-val">Mon – Sun · 5:00PM – 10:00PM<br><span style="font-size:12px;color:var(--mist)">Last order 9:30PM</span></p>
+          </div>
+          <div>
+            <p class="loc-row-label">Contact</p>
+            <p class="loc-row-val">
+              <a href="https://wa.me/85260155553?text=%E4%BD%A0%E5%A5%BD%EF%BC%81%E6%88%91%E6%83%B3%E9%A0%90%E7%B4%84%E4%B9%BE%E6%9D%AF%E4%B8%B2%E7%87%92%E5%B1%85%E9%85%92%E5%B1%8B%E3%80%82%0AHi!%20I%27d%20like%20to%20make%20a%20reservation%20at%20Ganbei%20Yakitori%20HK." target="_blank" rel="noopener">+852 6015 5553</a><br>
+              <a href="https://www.instagram.com/ganbei.yakitori.tst/" target="_blank" rel="noopener">@ganbei.yakitori.tst</a>
+            </p>
+          </div>
+        </div>
+        <a href="https://wa.me/85260155553?text=%E4%BD%A0%E5%A5%BD%EF%BC%81%E6%88%91%E6%83%B3%E9%A0%90%E7%B4%84%E4%B9%BE%E6%9D%AF%E4%B8%B2%E7%87%92%E5%B1%85%E9%85%92%E5%B1%8B%E3%80%82%0AHi!%20I%27d%20like%20to%20make%20a%20reservation%20at%20Ganbei%20Yakitori%20HK." class="loc-reserve" target="_blank" rel="noopener">WhatsApp to Reserve →</a>
+      </div>
+
+      <div class="loc-card r rd1">
+        <span class="loc-badge">Hong Kong Island</span>
+        <h3 class="loc-name">Sai Wan</h3>
+        <span class="loc-tc">西環 · 皇后大道西</span>
+        <div class="loc-details">
+          <div>
+            <p class="loc-row-label">Address</p>
+            <p class="loc-row-val">West Grand Court<br>Queen's Road West, Sai Wan</p>
+          </div>
+          <div>
+            <p class="loc-row-label">Hours</p>
+            <p class="loc-row-val">Mon – Sun · 5:00PM – 10:00PM<br><span style="font-size:12px;color:var(--mist)">Last order 9:30PM</span></p>
+          </div>
+          <div>
+            <p class="loc-row-label">Contact</p>
+            <p class="loc-row-val">
+              <a href="https://wa.me/85260155553?text=%E4%BD%A0%E5%A5%BD%EF%BC%81%E6%88%91%E6%83%B3%E9%A0%90%E7%B4%84%E4%B9%BE%E6%9D%AF%E4%B8%B2%E7%87%92%E5%B1%85%E9%85%92%E5%B1%8B%E3%80%82%0AHi!%20I%27d%20like%20to%20make%20a%20reservation%20at%20Ganbei%20Yakitori%20HK." target="_blank" rel="noopener">+852 6015 5553</a><br>
+              <a href="https://www.facebook.com/profile.php?id=100057386382843" target="_blank" rel="noopener">Facebook Page</a>
+            </p>
+          </div>
+        </div>
+        <a href="https://wa.me/85260155553?text=%E4%BD%A0%E5%A5%BD%EF%BC%81%E6%88%91%E6%83%B3%E9%A0%90%E7%B4%84%E4%B9%BE%E6%9D%AF%E4%B8%B2%E7%87%92%E5%B1%85%E9%85%92%E5%B1%8B%E3%80%82%0AHi!%20I%27d%20like%20to%20make%20a%20reservation%20at%20Ganbei%20Yakitori%20HK." class="loc-reserve" target="_blank" rel="noopener">WhatsApp to Reserve →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RESERVE -->
+<section id="reserve">
+  <div class="reserve-inner">
+    <span class="eyebrow r i18n" style="display:block;text-align:center" data-en="Reserve Your Table" data-tc="立即訂位">Reserve Your Table</span>
+    <h2 class="reserve-big r rd1">TONIGHT'S<br>SEAT IS <em>YOURS.</em></h2>
+    <span class="reserve-tc r rd2 i18n" data-en="Your table is waiting." data-tc="「今晚的位，為你留著。」">「今晚的位，為你留著。」</span>
+
+    <div class="r rd2" style="margin-bottom:20px">
+      <a href="https://wa.me/85260155553?text=%E4%BD%A0%E5%A5%BD%EF%BC%81%E6%88%91%E6%83%B3%E9%A0%90%E7%B4%84%E4%B9%BE%E6%9D%AF%E4%B8%B2%E7%87%92%E5%B1%85%E9%85%92%E5%B1%8B%E3%80%82%0AHi!%20I%27d%20like%20to%20make%20a%20reservation%20at%20Ganbei%20Yakitori%20HK." target="_blank" rel="noopener" class="reserve-main" style="display:flex;align-items:center;justify-content:center;gap:14px;text-decoration:none">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="currentColor"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.406A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.95 7.95 0 01-4.33-1.278l-.31-.184-3.22.91.893-3.136-.202-.322A7.95 7.95 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z" fill="currentColor"/></svg>
+        <span class="i18n" data-en="WHATSAPP TO RESERVE" data-tc="即時 WhatsApp 訂位">WHATSAPP TO RESERVE · 即時 WhatsApp 訂位</span>
+      </a>
+    </div>
+
+    <div class="reserve-cards r rd3">
+      <div class="reserve-card" style="cursor:default">
+        <p class="reserve-card-loc">Tsim Sha Tsui · 尖沙咀</p>
+        <p class="reserve-card-sub">TST &amp; Sai Wan Bookings<br><strong style="color:var(--cream);font-size:15px">+852 6015 5553</strong></p>
+      </div>
+      <div class="reserve-card" style="cursor:default">
+        <p class="reserve-card-loc">Hours · 營業時間</p>
+        <p class="reserve-card-sub">Mon – Sun · 5:00PM – 10:00PM<br>Last order 9:30PM</p>
+      </div>
+    </div>
+
+    <p class="reserve-note r rd4 i18n" data-en="Please include date, party size &amp; preferred location" data-tc="請在訊息內註明日期、人數及分店">請在訊息內註明日期、人數及分店 · Please include date, party size &amp; location</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <p class="footer-brand">GANBEI <span>乾杯</span> · HONG KONG</p>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/ganbei.yakitori.tst/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=100057386382843" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://wa.me/85260155553?text=%E4%BD%A0%E5%A5%BD%EF%BC%81%E6%88%91%E6%83%B3%E9%A0%90%E7%B4%84%E4%B9%BE%E6%9D%AF%E4%B8%B2%E7%87%92%E5%B1%85%E9%85%92%E5%B1%8B%E3%80%82%0AHi!%20I%27d%20like%20to%20make%20a%20reservation%20at%20Ganbei%20Yakitori%20HK." target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <p class="footer-copy">© 2025 Ganbei Yakitori HK · 乾杯串燒居酒屋</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* Sticky nav */
+  var nav=document.getElementById('nav');
+  window.addEventListener('scroll',function(){
+    nav.classList.toggle('scrolled',window.scrollY>50);
+  },{passive:true});
+
+  /* Mobile nav */
+  var burger=document.getElementById('burger');
+  var mob=document.getElementById('mob-nav');
+  burger.addEventListener('click',function(){
+    var open=mob.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  mob.querySelectorAll('.mob-link').forEach(function(l){
+    l.addEventListener('click',function(){
+      mob.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+      document.body.style.overflow='';
+    });
+  });
+
+  /* Scroll reveal */
+  var els=document.querySelectorAll('.r');
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target);}
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -32px 0px'});
+  els.forEach(function(el){io.observe(el);});
+
+  /* Hero reveal immediately */
+  document.querySelectorAll('#hero .r').forEach(function(el,i){
+    setTimeout(function(){el.classList.add('v');},180+i*110);
+  });
+
+})();
+</script>
+</body>
+</html>
